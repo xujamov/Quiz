@@ -51,7 +51,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_height="120dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
@@ -61,7 +61,7 @@
                 <ImageView
                     android:id="@+id/bone2"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:onClick="PlayGame"
@@ -71,32 +71,30 @@
                 <ImageView
                     android:id="@+id/bone1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:onClick="PlayGame"
                     android:src="@drawable/v4_skeletone_part_panal_0"
                     android:tag="skelet1" />
 
-                <ImageView
-                    android:id="@+id/bone3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:onClick="PlayGame"
-                    android:src="@drawable/v4_skeletone_part_panal_5"
-                    android:tag="skelet3" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/bone3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:onClick="PlayGame"-->
+<!--                    android:src="@drawable/v4_skeletone_part_panal_5"-->
+<!--                    android:tag="skelet3" />-->
 
-                <ImageView
-                    android:id="@+id/bone4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:onClick="PlayGame"
-                    android:src="@drawable/v4_skeletone_part_panal_2"
-                    android:tag="skelet4" />
+<!--                <ImageView-->
+<!--                    android:id="@+id/bone4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:onClick="PlayGame"-->
+<!--                    android:src="@drawable/v4_skeletone_part_panal_2"-->
+<!--                    android:tag="skelet4" />-->
             </LinearLayout>
         </LinearLayout>
 

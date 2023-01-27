@@ -31,8 +31,8 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         imageView = (ImageView) findViewById(R.id.imageView);
         bone1 = (ImageView) findViewById(R.id.bone1);
         bone2 = (ImageView) findViewById(R.id.bone2);
-        bone3 = (ImageView) findViewById(R.id.bone3);
-        bone4 = (ImageView) findViewById(R.id.bone4);
+//        bone3 = (ImageView) findViewById(R.id.bone3);
+//        bone4 = (ImageView) findViewById(R.id.bone4);
         frameLayout = (FrameLayout) findViewById(R.id.body_frame);
 
         implementEvents();
@@ -145,6 +145,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     v.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
                 } else {
                     owner.removeView(v); //remove the dragged view
+                    owner.addView(boneImageView(R.drawable.v4_skeletone_part_panal_5));
                     // show part in shadow
                     switch (dragData) {
                         case "skelet1":
@@ -193,13 +194,28 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         return false;
     }
 
-    private void setImageResource (int resId) {
+    private int dpAsPixels(int dp) {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
+
+    private void setImageResource(int resId) {
         ImageView ivPart = new ImageView(BodyActivity.this);
         ivPart.setImageResource(resId);
-        float scale = getResources().getDisplayMetrics().density;
-        int dpAsPixels = (int) (30 * scale + 0.5f);
-        ivPart.setPadding(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+        int padding = dpAsPixels(30);
+        ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
+    }
+
+    private ImageView boneImageView(int resId) {
+        ImageView ivPart = new ImageView(BodyActivity.this);
+        ivPart.setImageResource(resId);
+        int margin = dpAsPixels(10);
+        ivPart.setTag("");
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(margin, margin, margin, margin);
+        ivPart.setLayoutParams(lp);
+        return ivPart;
     }
 
     @Override
@@ -246,14 +262,14 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 bone2.setOnLongClickListener(BodyActivity.this);
                 bone2.setOnClickListener(null);
                 break;
-            case R.id.bone3:
-                bone3.setOnLongClickListener(BodyActivity.this);
-                bone3.setOnClickListener(null);
-                break;
-            case R.id.bone4:
-                bone4.setOnLongClickListener(BodyActivity.this);
-                bone4.setOnClickListener(null);
-                break;
+//            case R.id.bone3:
+//                bone3.setOnLongClickListener(BodyActivity.this);
+//                bone3.setOnClickListener(null);
+//                break;
+//            case R.id.bone4:
+//                bone4.setOnLongClickListener(BodyActivity.this);
+//                bone4.setOnClickListener(null);
+//                break;
         }
     }
 }
