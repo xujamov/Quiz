@@ -59,45 +59,15 @@ class QuizHelper extends SQLiteOpenHelper {
     void allQuestion() {
         ArrayList<Question> arraylist = new ArrayList<>();
 
-        arraylist.add(new Question("Galileo was an Italian astronomer who developed?", "Telescope", "Airoplane", "Electricity", "Train", "Telescope"));
+        arraylist.add(new Question("70 + 80 = ?", "150", "100", "110", "180", "150"));
 
-        arraylist.add(new Question("Who is the father of Geometry ?", "Aristotle", "Euclid", "Pythagoras", "Kepler", "Euclid"));
+        arraylist.add(new Question("94 – x = 47. x = ?", "40", "47", "43", "49", "47"));
 
-        arraylist.add(new Question("Who was known as Iron man of India ?", "Govind Ballabh Pant", "Jawaharlal Nehru", "Subhash Chandra Bose", "Sardar Vallabhbhai Patel", "Sardar Vallabhbhai Patel"));
+        arraylist.add(new Question("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi? ?", "3", "4", "5", "6", "5"));
 
-        arraylist.add(new Question("The first woman in space was ?", "Valentina Tereshkova", "Sally Ride", "Naidia Comenci", "Tamara Press", "Valentina Tereshkova"));
+        arraylist.add(new Question("72 : 8 = ?", "7", "8", "9", "11", "9"));
 
-        arraylist.add(new Question("Who is the Flying Sikh of India ?", "Mohinder Singh", "Joginder Singh", "Ajit Pal Singh", "Milkha singh", "Milkha singh"));
-
-        arraylist.add(new Question("The Indian to beat the computers in mathematical wizardry is", "Ramanujam", "Rina Panigrahi", "Raja Ramanna", "Shakunthala Devi", "Shakunthala Devi"));
-
-        arraylist.add(new Question("Who is Larry Pressler ?", "Politician", "Painter", "Actor", "Tennis player", "Politician"));
-
-        arraylist.add(new Question("Michael Jackson is a distinguished person in the field of ?", "Pop Music", "Jounalism", "Sports", "Acting", "Pop Music"));
-
-        arraylist.add(new Question("The first Indian to swim across English channel was ?", "V. Merchant", "P. K. Banerji", "Mihir Sen", "Arati Saha", "Mihir Sen"));
-
-        arraylist.add(new Question("Who was the first Indian to make a movie?", "Dhundiraj Govind Phalke", " Asha Bhonsle", " Ardeshir Irani", "V. Shantaram", "Dhundiraj Govind Phalke"));
-
-        arraylist.add(new Question("Who is known as the ' Saint of the gutters ?", "B.R.Ambedkar", "Mother Teresa", "Mahatma Gandhi", "Baba Amte", "Mother Teresa"));
-
-        arraylist.add(new Question("Who invented the famous formula E=mc^2", "Albert Einstein", "Galilio", "Sarvesh", "Bill Gates", "Albert Einstein"));
-
-        arraylist.add(new Question("Who is elected as president of us 2016", "Donald Trump", "Hilary Clinton", "Jhon pol", "Barack Obama", "Donald Trump"));
-
-        arraylist.add(new Question("Who was the founder of company Microsoft", "Bill Gates", "Bill Clinton", "Jhon rio", "Steve jobs", "Bill Gates"));
-
-        arraylist.add(new Question("Who was the founder of company Apple ?", "Steve Jobs", "Steve Washinton", "Bill Gates", "Jobs Wills", "Steve Jobs"));
-
-        arraylist.add(new Question("Who was the founder of company Google ?", "Steve Jobs", "Bill Gates", "Larry Page", "Sundar Pichai", "Larry Page"));
-
-        arraylist.add(new Question("Who is know as god of cricket ?", "Sachin Tendulkar", "Kapil Dev", "Virat Koli", "Dhoni", "Sachin Tendulkar"));
-
-        arraylist.add(new Question("who has won ballon d'or of 2015 ?", "Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kaka", "Lionel Messi"));
-
-        arraylist.add(new Question("who has won ballon d'or of 2014 ?", "Neymar", "Lionel Messi", "Cristiano Ronaldo", "Kaka", "Cristiano Ronaldo"));
-
-        arraylist.add(new Question("the Founder of the most famous gaming platform steam is ?", "Bill Cliton", "Bill Williams", "Gabe Newell", "Bill Gates", "Gabe Newell"));
+        arraylist.add(new Question("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
 
         this.addAllQuestions(arraylist);
 

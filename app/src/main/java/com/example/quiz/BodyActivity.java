@@ -148,40 +148,16 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     // show part in shadow
                     switch (dragData) {
                         case "skelet1":
-                            ImageView ivPart1 = new ImageView(BodyActivity.this);
-                            ivPart1.setImageResource(R.drawable.v4_skeletone_part_use_0);
-                            ivPart1.setLayoutParams(new FrameLayout.LayoutParams(
-                                    FrameLayout.LayoutParams.MATCH_PARENT,
-                                    FrameLayout.LayoutParams.MATCH_PARENT
-                            ));
-                            frameLayout.addView(ivPart1);
+                            setImageResource(R.drawable.v4_skeletone_part_use_0);
                             break;
                         case "skelet2":
-                            ImageView ivPart2 = new ImageView(BodyActivity.this);
-                            ivPart2.setImageResource(R.drawable.v4_skeletone_part_use_1);
-                            ivPart2.setLayoutParams(new FrameLayout.LayoutParams(
-                                    FrameLayout.LayoutParams.MATCH_PARENT,
-                                    FrameLayout.LayoutParams.MATCH_PARENT
-                            ));
-                            frameLayout.addView(ivPart2);
+                            setImageResource(R.drawable.v4_skeletone_part_use_1);
                             break;
                         case "skelet3":
-                            ImageView ivPart3 = new ImageView(BodyActivity.this);
-                            ivPart3.setImageResource(R.drawable.v4_skeletone_part_use_5);
-                            ivPart3.setLayoutParams(new FrameLayout.LayoutParams(
-                                    FrameLayout.LayoutParams.MATCH_PARENT,
-                                    FrameLayout.LayoutParams.MATCH_PARENT
-                            ));
-                            frameLayout.addView(ivPart3);
+                            setImageResource(R.drawable.v4_skeletone_part_use_5);
                             break;
                         case "skelet4":
-                            ImageView ivPart4 = new ImageView(BodyActivity.this);
-                            ivPart4.setImageResource(R.drawable.v4_skeletone_part_use_2);
-                            ivPart4.setLayoutParams(new FrameLayout.LayoutParams(
-                                    FrameLayout.LayoutParams.MATCH_PARENT,
-                                    FrameLayout.LayoutParams.MATCH_PARENT
-                            ));
-                            frameLayout.addView(ivPart4);
+                            setImageResource(R.drawable.v4_skeletone_part_use_2);
                             break;
                     }
                 }
@@ -215,6 +191,15 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 break;
         }
         return false;
+    }
+
+    private void setImageResource (int resId) {
+        ImageView ivPart = new ImageView(BodyActivity.this);
+        ivPart.setImageResource(resId);
+        float scale = getResources().getDisplayMetrics().density;
+        int dpAsPixels = (int) (30 * scale + 0.5f);
+        ivPart.setPadding(dpAsPixels, dpAsPixels, dpAsPixels, dpAsPixels);
+        frameLayout.addView(ivPart);
     }
 
     @Override
