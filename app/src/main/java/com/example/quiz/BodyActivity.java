@@ -22,8 +22,6 @@ import android.widget.Toast;
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
     ImageView imageView, bone1, bone2, bone3, bone4;
     FrameLayout frameLayout;
-    int bone = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,9 +129,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 // Gets the text data from the item.
                 String dragData = item.getText().toString();
 
-                // Displays a message containing the dragged data.
-                Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_SHORT).show();
-
                 // Turns off any color tints
 //                view.getBackground().clearColorFilter();
 
@@ -146,13 +141,13 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
                 LinearLayout container = (LinearLayout) view; //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
 
-                if (container.equals(owner)) {
+                if (container.toString().contains("parts_layout")) {
                     v.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
                 } else {
                     owner.removeView(v); //remove the dragged view
                     // show part in shadow
-                    switch (bone) {
-                        case 1:
+                    switch (dragData) {
+                        case "skelet1":
                             ImageView ivPart1 = new ImageView(BodyActivity.this);
                             ivPart1.setImageResource(R.drawable.v4_skeletone_part_use_0);
                             ivPart1.setLayoutParams(new FrameLayout.LayoutParams(
@@ -161,7 +156,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                             ));
                             frameLayout.addView(ivPart1);
                             break;
-                        case 2:
+                        case "skelet2":
                             ImageView ivPart2 = new ImageView(BodyActivity.this);
                             ivPart2.setImageResource(R.drawable.v4_skeletone_part_use_1);
                             ivPart2.setLayoutParams(new FrameLayout.LayoutParams(
@@ -170,7 +165,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                             ));
                             frameLayout.addView(ivPart2);
                             break;
-                        case 3:
+                        case "skelet3":
                             ImageView ivPart3 = new ImageView(BodyActivity.this);
                             ivPart3.setImageResource(R.drawable.v4_skeletone_part_use_5);
                             ivPart3.setLayoutParams(new FrameLayout.LayoutParams(
@@ -179,7 +174,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                             ));
                             frameLayout.addView(ivPart3);
                             break;
-                        case 4:
+                        case "skelet4":
                             ImageView ivPart4 = new ImageView(BodyActivity.this);
                             ivPart4.setImageResource(R.drawable.v4_skeletone_part_use_2);
                             ivPart4.setLayoutParams(new FrameLayout.LayoutParams(
@@ -260,19 +255,19 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         switch (data) {
             case R.id.bone1:
                 bone1.setOnLongClickListener(BodyActivity.this);
-                bone = 1;
+                bone1.setOnClickListener(null);
                 break;
             case R.id.bone2:
                 bone2.setOnLongClickListener(BodyActivity.this);
-                bone = 2;
+                bone2.setOnClickListener(null);
                 break;
             case R.id.bone3:
                 bone3.setOnLongClickListener(BodyActivity.this);
-                bone = 3;
+                bone3.setOnClickListener(null);
                 break;
             case R.id.bone4:
                 bone4.setOnLongClickListener(BodyActivity.this);
-                bone = 4;
+                bone4.setOnClickListener(null);
                 break;
         }
     }
