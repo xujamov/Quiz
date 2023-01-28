@@ -17,6 +17,8 @@
             android:id="@+id/body_frame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/doska"
             android:orientation="horizontal"
             android:padding="20dp">
 
@@ -24,8 +26,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/doska"
-                android:padding="30dp"/>
+                android:layout_gravity="center"
+                android:padding="30dp" />
 
         </FrameLayout>
 
@@ -56,15 +58,15 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/bone2"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:onClick="PlayGame"-->
-<!--                    android:src="@drawable/v4_skeletone_part_panal_1"-->
-<!--                    android:tag="skelet2" />-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/bone2"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:layout_margin="10dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:onClick="PlayGame"-->
+                <!--                    android:src="@drawable/v4_skeletone_part_panal_1"-->
+                <!--                    android:tag="skelet2" />-->
             </LinearLayout>
         </LinearLayout>
 

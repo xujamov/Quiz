@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -200,8 +201,11 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 // invoke getResult(), and displays what happened.
                 if (dragEvent.getResult()) {
                     if (correctAnswers == bonesList.size()) {
-                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
-                        startActivity(intent);
+                        frameLayout.removeAllViews();
+                        imageView.setImageResource(R.drawable.v3_skeleton);
+                        setBlackboardResourceAndAnimate(imageView);
+//                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
+//                        startActivity(intent);
                     }
                 }
 
@@ -229,6 +233,16 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
         correctAnswers++;
+    }
+
+    private void setBlackboardResourceAndAnimate(ImageView ivPart) {
+        int padding = dpAsPixels(30);
+        ivPart.setPadding(padding, padding, padding, padding);
+        frameLayout.addView(ivPart);
+        YoYo.with(Techniques.Wobble)
+                .duration(700)
+                .repeat(5)
+                .playOn(ivPart);
     }
 
     private ImageView tableImageView(int resId) {
