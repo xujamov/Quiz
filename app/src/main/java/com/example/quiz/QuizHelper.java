@@ -18,7 +18,7 @@ class QuizHelper extends SQLiteOpenHelper {
     //or any kind of modification in db just increment version no.
     private static final int DB_VERSION = 3;
     //Table name
-    private static final String TABLE_NAME = "TQ";
+    private static final String TABLE_NAME = "QUIZ";
     //Id of question
     private static final String UID = "_UID";
     //Question
@@ -57,29 +57,37 @@ class QuizHelper extends SQLiteOpenHelper {
     }
 
     void allQuestion() {
-        ArrayList<Question> arraylist = new ArrayList<>();
+        ArrayList<Quiz> arraylist = new ArrayList<>();
 
-        arraylist.add(new Question("70 + 80 = ?", "150", "100", "110", "180", "150"));
+        arraylist.add(new Quiz("70 + 80 = ?", "150", "100", "110", "180", "150"));
 
-        arraylist.add(new Question("94 – x = 47. x = ?", "40", "47", "43", "49", "47"));
+        arraylist.add(new Quiz("94 – x = 47\nx = ?", "40", "47", "43", "49", "47"));
 
-        arraylist.add(new Question("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi? ?", "3", "4", "5", "6", "5"));
+        arraylist.add(new Quiz("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi? ?", "3", "4", "5", "6", "5"));
 
-        arraylist.add(new Question("72 : 8 = ?", "7", "8", "9", "11", "9"));
+        arraylist.add(new Quiz("72 : 8 = ?", "7", "8", "9", "11", "9"));
 
-        arraylist.add(new Question("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
+        arraylist.add(new Quiz("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
+
+        arraylist.add(new Quiz("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "167", "176", "716", "617", "176"));
+
+        arraylist.add(new Quiz("42 : 6 = ?", "167", "176", "716", "617", "176"));
+
+        arraylist.add(new Quiz("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "167", "176", "716", "617", "176"));
+
+        arraylist.add(new Quiz("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "167", "176", "716", "617", "176"));
 
         this.addAllQuestions(arraylist);
 
     }
 
 
-    private void addAllQuestions(ArrayList<Question> allQuestions) {
+    private void addAllQuestions(ArrayList<Quiz> allQuestions) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         try {
             ContentValues values = new ContentValues();
-            for (Question question : allQuestions) {
+            for (Quiz question : allQuestions) {
                 values.put(QUESTION, question.getQuestion());
                 values.put(OPTA, question.getOptA());
                 values.put(OPTB, question.getOptB());
@@ -96,9 +104,9 @@ class QuizHelper extends SQLiteOpenHelper {
     }
 
 
-    List<Question> getAllOfTheQuestions() {
+    List<Quiz> getAllOfTheQuestions() {
 
-        List<Question> questionsList = new ArrayList<>();
+        List<Quiz> questionsList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
         String coloumn[] = {UID, QUESTION, OPTA, OPTB, OPTC, OPTD, ANSWER};
@@ -106,7 +114,7 @@ class QuizHelper extends SQLiteOpenHelper {
 
 
         while (cursor.moveToNext()) {
-            Question question = new Question();
+            Quiz question = new Quiz();
             question.setId(cursor.getInt(0));
             question.setQuestion(cursor.getString(1));
             question.setOptA(cursor.getString(2));

@@ -12,5 +12,6 @@
     <string name="play_game">Play Game</string>
     <string name="quit">Quit</string>
     <string name="next">Next</string>
+    <string name="check">Tekshirish</string>
     <string name="cancel">✖</string>
 </resources>

@@ -2,13 +2,13 @@ package com.example.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.DragEvent;
@@ -18,14 +18,12 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
     ImageView imageView;
@@ -223,13 +221,25 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     if (correctAnswers == bonesList.size()) {
                         frameLayout.removeAllViews();
                         imageView.setImageResource(R.drawable.v3_skeleton);
-                        setBlackboardResourceAndAnimate(imageView);
+                        setBlackboard(imageView);
                         // TODO should wait some seconds
                         playMusic(R.raw.complete);
-                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
-                        startActivity(intent);
-                        mediaPlayer.reset();
-                        finish();
+                        setBlackboard(imageView);
+                        new CountDownTimer(2100,1000){
+                            public void onTick(long millisUntilFinished){
+                                YoYo.with(Techniques.Tada)
+                                        .duration(700)
+                                        .repeat(3)
+                                        .playOn(imageView);
+                            }
+                            public void onFinish(){
+                                Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
+                                startActivity(intent);
+                                mediaPlayer.reset();
+                                finish();
+
+                            }
+                        } .start();
                     }
                 }
 
@@ -259,14 +269,15 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         correctAnswers++;
     }
 
-    private void setBlackboardResourceAndAnimate(ImageView ivPart) {
+    private void setBlackboard(ImageView ivPart) {
         int padding = dpAsPixels(30);
         ivPart.setPadding(padding, padding, padding, padding);
+        frameLayout.removeAllViews();
         frameLayout.addView(ivPart);
-        YoYo.with(Techniques.Tada)
-                .duration(700)
-                .repeat(5)
-                .playOn(ivPart);
+//        YoYo.with(Techniques.Tada)
+//                .duration(700)
+//                .repeat(5)
+//                .playOn(ivPart);
     }
 
     private ImageView tableImageView(int resId) {
@@ -279,7 +290,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         lp.setMargins(margin, margin, margin, margin);
         ivPart.setLayoutParams(lp);
         ivPart.setOnClickListener(view -> {
-            Intent intent = new Intent(BodyActivity.this, MainGameActivity.class);
+            Intent intent = new Intent(BodyActivity.this, QuestionGameActivity.class);
             intent.putExtra("bodyPartId", view.getId());
             startActivity(intent);
         });
@@ -331,19 +342,16 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         .repeat(5)
                         .playOn(iv);
 
-                iv.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            ClipData data = ClipData.newPlainText("", "");
-                            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(iv);
+                iv.setOnTouchListener((v, event) -> {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        ClipData data1 = ClipData.newPlainText("", "");
+                        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(iv);
 
-                            iv.startDragAndDrop(data, shadowBuilder, iv, 0);
-                            iv.setVisibility(View.INVISIBLE);
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        iv.startDragAndDrop(data1, shadowBuilder, iv, 0);
+                        iv.setVisibility(View.INVISIBLE);
+                        return true;
+                    } else {
+                        return false;
                     }
                 });
             }

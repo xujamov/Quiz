@@ -1,48 +1,50 @@
 package com.example.quiz;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
-import android.os.CountDownTimer;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.TextView;
+
 import java.util.Collections;
 import java.util.List;
-
+import java.util.Locale;
 
 import info.hoang8f.widget.FButton;
 
-public class MainGameActivity extends AppCompatActivity {
-    FButton buttonA, buttonB, buttonC, buttonD;
+public class QuestionGameActivity extends AppCompatActivity {
+    FButton buttonCheck;
     TextView questionText, triviaQuizText, timeText, resultText;
-    QuizHelper QuizHelper;
-    Quiz currentQuestion;
-    List<Quiz> list;
+    QuestionHelperMath QuestionHelper;
+    Question currentQuestion;
+    List<Question> list;
     int qid = 0;
-    int timeValue = 20;
+    int timeValue = 60;
     int bodyPartId = 0;
     CountDownTimer countDownTimer;
-
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_question_game);
 
         //Initializing variables
         questionText = (TextView) findViewById(R.id.Question);
-        buttonA = (FButton) findViewById(R.id.buttonA);
-        buttonB = (FButton) findViewById(R.id.buttonB);
-        buttonC = (FButton) findViewById(R.id.buttonC);
-        buttonD = (FButton) findViewById(R.id.buttonD);
+        editText = (EditText) findViewById(R.id.etAnswer);
+        buttonCheck = (FButton) findViewById(R.id.buttonCheck);
+
         triviaQuizText = (TextView) findViewById(R.id.triviaQuizText);
         timeText = (TextView) findViewById(R.id.timeText);
         resultText = (TextView) findViewById(R.id.resultText);
@@ -51,19 +53,19 @@ public class MainGameActivity extends AppCompatActivity {
         bodyPartId = intent.getIntExtra("bodyPartId", 0);
 
         //Our database helper class
-        QuizHelper = new QuizHelper(this);
+        QuestionHelper = new QuestionHelperMath(this);
         //Make db writable
-        QuizHelper.getWritableDatabase();
+        QuestionHelper.getWritableDatabase();
 
         //It will check if the ques,options are already added in table or not
         //If they are not added then the getAllOfTheQuestions() will return a list of size zero
-        if (QuizHelper.getAllOfTheQuestions().size() == 0) {
+        if (QuestionHelper.getAllOfTheQuestions().size() == 0) {
             //If not added then add the ques,options in table
-            QuizHelper.allQuestion();
+            QuestionHelper.allQuestion();
         }
 
         //This will return us a list of data type Question
-        list = QuizHelper.getAllOfTheQuestions();
+        list = QuestionHelper.getAllOfTheQuestions();
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);
@@ -76,7 +78,7 @@ public class MainGameActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
 
                 //here you can have your logic to set text to timeText
-                timeText.setText(String.valueOf(timeValue) + "\"");
+                timeText.setText(timeValue + "\"");
 
                 //With each iteration decrement the time by 1 sec
                 timeValue -= 1;
@@ -102,24 +104,17 @@ public class MainGameActivity extends AppCompatActivity {
             }
         }.start();
 
-//        //This method will set the que and four options
+        //        //This method will set the que and four options
         updateQueAndOptions();
 
-
     }
-
 
     public void updateQueAndOptions() {
 
         //This method will setText for que and options
         questionText.setText(currentQuestion.getQuestion());
-        buttonA.setText(currentQuestion.getOptA());
-        buttonB.setText(currentQuestion.getOptB());
-        buttonC.setText(currentQuestion.getOptC());
-        buttonD.setText(currentQuestion.getOptD());
 
-
-        timeValue = 20;
+        timeValue = 60;
 
         //Now since the user has ans correct just reset timer back for another que- by cancel and start
         countDownTimer.cancel();
@@ -127,27 +122,15 @@ public class MainGameActivity extends AppCompatActivity {
 
     }
 
-    //Onclick listener for first button
-    public void buttonA(View view) {
+    public void checkAnswer(View view) {
         //compare the option with the ans if yes then make button color green
-        if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
-            buttonA.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
-            //Check if user has not exceeds the que limit
-            if (qid < list.size() - 1) {
+        String answer = editText.getText().toString().toLowerCase();
+        if (currentQuestion.getAnswer().toLowerCase().contains(answer)) {
+            //user won't be able to press another option button after pressing one button
+            disableButton();
 
-                //Now disable all the option button since user ans is correct so
-                //user won't be able to press another option button after pressing one button
-                disableButton();
-
-                //Show the dialog that ans is correct
-                correctDialog();
-            }
-            //If user has exceeds the que limit just navigate him to GameWon activity
-            else {
-
-                gameWon();
-
-            }
+            //Show the dialog that ans is correct
+            correctDialog();
         }
         //User ans is wrong then just navigate him to the PlayAgain activity
         else {
@@ -155,59 +138,6 @@ public class MainGameActivity extends AppCompatActivity {
             gameLostPlayAgain();
 
         }
-    }
-
-    //Onclick listener for sec button
-    public void buttonB(View view) {
-        if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
-            buttonB.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
-            if (qid < list.size() - 1) {
-                disableButton();
-                correctDialog();
-            } else {
-                gameWon();
-            }
-        } else {
-            gameLostPlayAgain();
-        }
-    }
-
-    //Onclick listener for third button
-    public void buttonC(View view) {
-        if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
-            buttonC.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
-            if (qid < list.size() - 1) {
-                disableButton();
-                correctDialog();
-            } else {
-                gameWon();
-            }
-        } else {
-
-            gameLostPlayAgain();
-        }
-    }
-
-    //Onclick listener for fourth button
-    public void buttonD(View view) {
-        if (currentQuestion.getOptD().equals(currentQuestion.getAnswer())) {
-            buttonD.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
-            if (qid < list.size() - 1) {
-                disableButton();
-                correctDialog();
-            } else {
-                gameWon();
-            }
-        } else {
-            gameLostPlayAgain();
-        }
-    }
-
-    //This method will navigate from current activity to GameWon
-    public void gameWon() {
-        Intent intent = new Intent(this, GameWonActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     //This method is called when user ans is wrong
@@ -263,7 +193,7 @@ public class MainGameActivity extends AppCompatActivity {
     //This dialog is show to the user after he ans correct
     public void correctDialog() {
         playMusic(R.raw.correct);
-        final Dialog dialogCorrect = new Dialog(MainGameActivity.this);
+        final Dialog dialogCorrect = new Dialog(QuestionGameActivity.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogCorrect.getWindow() != null) {
             ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
@@ -284,7 +214,7 @@ public class MainGameActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainGameActivity.this);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuestionGameActivity.this);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("bodyPartId", bodyPartId); //InputString: from the EditText
                 editor.apply();
@@ -294,22 +224,8 @@ public class MainGameActivity extends AppCompatActivity {
         });
     }
 
-
     //This method will disable all the option button
     public void disableButton() {
-        buttonA.setEnabled(false);
-        buttonB.setEnabled(false);
-        buttonC.setEnabled(false);
-        buttonD.setEnabled(false);
+        buttonCheck.setEnabled(false);
     }
-
-    //This method will all enable the option buttons
-    public void enableButton() {
-        buttonA.setEnabled(true);
-        buttonB.setEnabled(true);
-        buttonC.setEnabled(true);
-        buttonD.setEnabled(true);
-    }
-
-
 }

@@ -17,7 +17,7 @@ public class ScreenActivity extends AppCompatActivity {
         //the below method will initialize views
         initViews();
 
-        //PlayGame button - it will take you to the MainGameActivity
+        //PlayGame button - it will take you to the CategoryActivity
         playGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
