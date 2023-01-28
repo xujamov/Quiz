@@ -15,9 +15,6 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-//        ImageView mImageViewFilling = (ImageView) findViewById(R.id.speak);
-//        ((AnimationDrawable) mImageViewFilling.getBackground()).start();
-
     }
 
     public void PlaySkelet(View view) {
