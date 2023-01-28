@@ -39,18 +39,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     MediaPlayer mediaPlayer;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        mediaPlayer.pause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mediaPlayer.start();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body);
@@ -73,6 +61,11 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         mediaPlayer.start();
 
         implementEvents();
+    }
+
+    public void playMusic(int resId){
+        MediaPlayer mp = MediaPlayer.create(this, resId);
+        mp.start();
     }
 
     //Implement lists
@@ -225,6 +218,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         imageView.setImageResource(R.drawable.v3_skeleton);
                         setBlackboardResourceAndAnimate(imageView);
                         // TODO should wait some seconds
+                        playMusic(R.raw.complete);
                         Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
                         startActivity(intent);
                     }

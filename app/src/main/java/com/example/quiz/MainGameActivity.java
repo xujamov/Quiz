@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -212,6 +213,7 @@ public class MainGameActivity extends AppCompatActivity {
     //This method is called when user ans is wrong
     //this method will navigate user to the activity PlayAgain
     public void gameLostPlayAgain() {
+        playMusic(R.raw.wrong);
         Intent intent = new Intent(this, PlayAgainActivity.class);
         startActivity(intent);
         finish();
@@ -255,8 +257,14 @@ public class MainGameActivity extends AppCompatActivity {
         finish();
     }
 
+    public void playMusic(int resId){
+        MediaPlayer mp = MediaPlayer.create(this, resId);
+        mp.start();
+    }
+
     //This dialog is show to the user after he ans correct
     public void correctDialog() {
+        playMusic(R.raw.correct);
         final Dialog dialogCorrect = new Dialog(MainGameActivity.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogCorrect.getWindow() != null) {
