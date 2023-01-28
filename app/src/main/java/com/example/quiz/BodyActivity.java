@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -35,6 +36,20 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     List<Integer> frameList = new ArrayList<>();
     private int correctAnswers = 0;
 
+    MediaPlayer mediaPlayer;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        mediaPlayer.start();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +67,9 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         partsList.remove(0);
         tableLayout.addView(tableImageView(partsList.get(0)));
         partsList.remove(0);
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.game_level);
+        mediaPlayer.start();
 
         implementEvents();
     }
