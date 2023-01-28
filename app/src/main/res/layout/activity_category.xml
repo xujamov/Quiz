@@ -23,6 +23,12 @@
             app:srcCompat="@drawable/skelet" />
 
         <ImageView
+            android:id="@+id/speak"
+            android:layout_width="100dp"
+            android:layout_height="200dp"
+            android:background="@drawable/speak" />
+
+        <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

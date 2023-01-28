@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Quiz</string>
     <string name="welcome">Qani ketdik!</string>
+    <string name="quote">Bilimlar dunyosini zabt etamiz!</string>
     <string name="question">Question</string>
     <string name="play_again">Play again</string>
     <string name="play_next">Davom qilish</string>
