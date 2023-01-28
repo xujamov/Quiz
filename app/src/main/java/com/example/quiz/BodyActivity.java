@@ -222,6 +222,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         playMusic(R.raw.complete);
                         Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
 
