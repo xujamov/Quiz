@@ -47,7 +47,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     @Override
     protected void onResume() {
         super.onResume();
-//        mediaPlayer.start();
+        mediaPlayer.start();
     }
 
     @Override
@@ -69,6 +69,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         partsList.remove(0);
 
         mediaPlayer = MediaPlayer.create(this, R.raw.game_level);
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
         implementEvents();
