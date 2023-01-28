@@ -6,8 +6,6 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -17,11 +15,18 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
-    ImageView imageView, bone1, bone2, bone3, bone4;
+    ImageView imageView;
     FrameLayout frameLayout;
+    List<Integer> bonesList = new ArrayList<>();
+    List<Integer> boneFrameList = new ArrayList<>();
+
+    List<Integer> partsList = new ArrayList<>();
+    List<Integer> frameList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +34,43 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         setContentView(R.layout.activity_body);
 
         imageView = (ImageView) findViewById(R.id.imageView);
-        bone1 = (ImageView) findViewById(R.id.bone1);
-        bone2 = (ImageView) findViewById(R.id.bone2);
-//        bone3 = (ImageView) findViewById(R.id.bone3);
-//        bone4 = (ImageView) findViewById(R.id.bone4);
         frameLayout = (FrameLayout) findViewById(R.id.body_frame);
+        implementLists();
+        // if category is skelet
+        partsList = new ArrayList<>(bonesList);
+        frameList = new ArrayList<>(boneFrameList);
+        LinearLayout tableLayout = (LinearLayout) findViewById(R.id.table_layout);
+        tableLayout.addView(tableImageView(partsList.get(0)));
+        partsList.remove(0);
+        tableLayout.addView(tableImageView(partsList.get(0)));
+        partsList.remove(0);
 
         implementEvents();
+    }
+
+    //Implement lists
+    private void implementLists() {
+        bonesList.add(R.drawable.v4_skeletone_part_panal_0);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_1);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_2);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_3);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_4);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_5);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_6);
+
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_0);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_1);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_2);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_3);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_4);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_5);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_6);
     }
 
     //Implement long click and drag listener
     private void implementEvents() {
         findViewById(R.id.body_layout).setOnDragListener(BodyActivity.this);
         findViewById(R.id.parts_layout).setOnDragListener(BodyActivity.this);
-    }
-
-    //This is onclick listener for button
-    //it will navigate from this activity to MainGameActivity
-    public void PlayGame(View view) {
-        Intent intent = new Intent(BodyActivity.this, MainGameActivity.class);
-        intent.putExtra("bodyPartId", view.getId());
-        startActivity(intent);
     }
 
     @Override
@@ -145,21 +166,13 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     v.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
                 } else {
                     owner.removeView(v); //remove the dragged view
-                    owner.addView(boneImageView(R.drawable.v4_skeletone_part_panal_5));
+                    if (!partsList.isEmpty()) {
+                        owner.addView(tableImageView(partsList.get(0)));
+                        partsList.remove(0);
+                    }
                     // show part in shadow
-                    switch (dragData) {
-                        case "skelet1":
-                            setImageResource(R.drawable.v4_skeletone_part_use_0);
-                            break;
-                        case "skelet2":
-                            setImageResource(R.drawable.v4_skeletone_part_use_1);
-                            break;
-                        case "skelet3":
-                            setImageResource(R.drawable.v4_skeletone_part_use_5);
-                            break;
-                        case "skelet4":
-                            setImageResource(R.drawable.v4_skeletone_part_use_2);
-                            break;
+                    if(bonesList.contains(v.getId())){
+                        setImageResource(boneFrameList.get(bonesList.indexOf(v.getId())));
                     }
                 }
 
@@ -180,7 +193,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
                 // invoke getResult(), and displays what happened.
                 if (dragEvent.getResult()) {
-
+                    if (partsList.isEmpty()) {
+                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
                 // returns true; the value is ignored.
@@ -207,14 +223,20 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         frameLayout.addView(ivPart);
     }
 
-    private ImageView boneImageView(int resId) {
+    private ImageView tableImageView(int resId) {
         ImageView ivPart = new ImageView(BodyActivity.this);
         ivPart.setImageResource(resId);
+        ivPart.setId(resId);
         int margin = dpAsPixels(10);
         ivPart.setTag("");
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         lp.setMargins(margin, margin, margin, margin);
         ivPart.setLayoutParams(lp);
+        ivPart.setOnClickListener(view -> {
+            Intent intent = new Intent(BodyActivity.this, MainGameActivity.class);
+            intent.putExtra("bodyPartId", view.getId());
+            startActivity(intent);
+        });
         return ivPart;
     }
 
@@ -253,23 +275,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(BodyActivity.this);
         int data = prefs.getInt("bodyPartId", 0); //no id: default value
-        switch (data) {
-            case R.id.bone1:
-                bone1.setOnLongClickListener(BodyActivity.this);
-                bone1.setOnClickListener(null);
-                break;
-            case R.id.bone2:
-                bone2.setOnLongClickListener(BodyActivity.this);
-                bone2.setOnClickListener(null);
-                break;
-//            case R.id.bone3:
-//                bone3.setOnLongClickListener(BodyActivity.this);
-//                bone3.setOnClickListener(null);
-//                break;
-//            case R.id.bone4:
-//                bone4.setOnLongClickListener(BodyActivity.this);
-//                bone4.setOnClickListener(null);
-//                break;
+        if (data != 0 && !partsList.contains(data)) {
+            ImageView iv = (ImageView) findViewById(data);
+            iv.setOnLongClickListener(BodyActivity.this);
+            iv.setOnClickListener(null);
         }
     }
 }
