@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="40dp"
     tools:context=".ScreenActivity">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:src="@drawable/main" />
 
@@ -19,11 +19,11 @@
         android:id="@+id/tQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/shablagooital"
         android:gravity="center"
         android:text="@string/welcome"
-        android:textSize="50sp"
+        android:textSize="40sp"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
@@ -34,11 +34,11 @@
         android:fontFamily="@font/titillium"
         android:gravity="center"
         android:text="@string/quote"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/playGame"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:src="@drawable/button" />
