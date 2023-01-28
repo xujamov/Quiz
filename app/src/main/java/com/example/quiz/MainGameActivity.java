@@ -282,6 +282,7 @@ public class MainGameActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("bodyPartId", bodyPartId); //InputString: from the EditText
                 editor.apply();
+                dialogCorrect.dismiss();
                 finish();
             }
         });

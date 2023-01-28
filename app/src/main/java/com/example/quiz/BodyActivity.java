@@ -27,6 +27,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
     List<Integer> partsList = new ArrayList<>();
     List<Integer> frameList = new ArrayList<>();
+    private int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,7 +194,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
                 // invoke getResult(), and displays what happened.
                 if (dragEvent.getResult()) {
-                    if (partsList.isEmpty()) {
+                    if (correctAnswers == bonesList.size()) {
                         Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
                         startActivity(intent);
                     }
@@ -221,6 +222,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         int padding = dpAsPixels(30);
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
+        correctAnswers++;
     }
 
     private ImageView tableImageView(int resId) {
@@ -277,8 +279,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         int data = prefs.getInt("bodyPartId", 0); //no id: default value
         if (data != 0 && !partsList.contains(data)) {
             ImageView iv = (ImageView) findViewById(data);
-            iv.setOnLongClickListener(BodyActivity.this);
-            iv.setOnClickListener(null);
+            if (iv != null) {
+                iv.setOnLongClickListener(BodyActivity.this);
+                iv.setOnClickListener(null);
+            }
         }
     }
 }
