@@ -95,6 +95,12 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
+    }
+
+    @Override
     public boolean onDrag(View view, DragEvent dragEvent) {
         // Defines a variable to store the action type for the incoming event
         int action = dragEvent.getAction();
