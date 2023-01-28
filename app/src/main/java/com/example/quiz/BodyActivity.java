@@ -23,6 +23,7 @@ import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
     ImageView imageView;
@@ -204,8 +205,9 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         frameLayout.removeAllViews();
                         imageView.setImageResource(R.drawable.v3_skeleton);
                         setBlackboardResourceAndAnimate(imageView);
-//                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
-//                        startActivity(intent);
+                        // TODO should wait some seconds
+                        Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
+                        startActivity(intent);
                     }
                 }
 
@@ -239,7 +241,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         int padding = dpAsPixels(30);
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
-        YoYo.with(Techniques.Wobble)
+        YoYo.with(Techniques.Tada)
                 .duration(700)
                 .repeat(5)
                 .playOn(ivPart);
