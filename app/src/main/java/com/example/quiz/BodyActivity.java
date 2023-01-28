@@ -2,6 +2,7 @@ package com.example.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
@@ -15,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +39,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         setContentView(R.layout.activity_body);
 
         imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(R.drawable.v4_skeleton_shadow);
         frameLayout = (FrameLayout) findViewById(R.id.body_frame);
         implementLists();
         // if category is skelet
@@ -173,7 +178,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     }
                     // show part in shadow
                     if(bonesList.contains(v.getId())){
-                        setImageResource(boneFrameList.get(bonesList.indexOf(v.getId())));
+                        setBlackboardResource(boneFrameList.get(bonesList.indexOf(v.getId())));
                     }
                 }
 
@@ -216,9 +221,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         return (int) (dp * scale + 0.5f);
     }
 
-    private void setImageResource(int resId) {
+    private void setBlackboardResource(int resId) {
         ImageView ivPart = new ImageView(BodyActivity.this);
         ivPart.setImageResource(resId);
+        ivPart.setId(resId);
         int padding = dpAsPixels(30);
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
@@ -282,6 +288,10 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
             if (iv != null) {
                 iv.setOnLongClickListener(BodyActivity.this);
                 iv.setOnClickListener(null);
+                YoYo.with(Techniques.Tada)
+                        .duration(700)
+                        .repeat(5)
+                        .playOn(iv);
             }
         }
     }

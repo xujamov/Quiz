@@ -25,8 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/doska"
-                android:padding="30dp"
-                android:src="@drawable/v4_skeleton_shadow" />
+                android:padding="30dp"/>
 
         </FrameLayout>
 
