@@ -252,8 +252,6 @@ public class MainGameActivity extends AppCompatActivity {
     //On BackPressed
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, ScreenActivity.class);
-        startActivity(intent);
         finish();
     }
 
