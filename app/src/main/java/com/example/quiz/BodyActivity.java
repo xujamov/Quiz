@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -321,6 +322,22 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         .duration(700)
                         .repeat(5)
                         .playOn(iv);
+
+                iv.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            ClipData data = ClipData.newPlainText("", "");
+                            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(iv);
+
+                            iv.startDragAndDrop(data, shadowBuilder, iv, 0);
+                            iv.setVisibility(View.INVISIBLE);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                });
             }
         }
     }
