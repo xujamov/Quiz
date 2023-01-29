@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/category_patterns"
     tools:context=".CategoryActivity">
 
     <LinearLayout
@@ -18,29 +19,29 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:onClick="PlaySkelet"
             app:srcCompat="@drawable/skelet" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/speak"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:background="@drawable/speak" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/speak"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            android:background="@drawable/speak" />-->
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            app:srcCompat="@drawable/muskul" />
+            app:srcCompat="@drawable/muscule" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ichki_organ" />
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/organs" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
