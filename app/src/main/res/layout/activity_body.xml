@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".BodyActivity">
 
     <LinearLayout
         android:id="@+id/body_layout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:gravity="center">
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/parts_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.60"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <FrameLayout
             android:id="@+id/body_frame"
@@ -22,13 +28,6 @@
             android:orientation="horizontal"
             android:padding="20dp">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:padding="30dp" />
-
         </FrameLayout>
 
     </LinearLayout>
@@ -36,28 +35,33 @@
     <LinearLayout
         android:id="@+id/parts_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/poll"
         android:gravity="center"
-        android:background="@drawable/poll">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.40"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/body_layout"
+        app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:baselineAligned="false"
             android:layout_height="250dp"
-            android:layout_weight="1"
-            android:background="@drawable/table"
-            android:orientation="horizontal">
+            android:background="@drawable/table">
 
             <LinearLayout
                 android:id="@+id/table_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:orientation="horizontal">
-            </LinearLayout>
+                android:orientation="horizontal" />
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

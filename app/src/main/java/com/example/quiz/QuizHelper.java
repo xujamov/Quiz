@@ -69,6 +69,7 @@ class QuizHelper extends SQLiteOpenHelper {
 
         arraylist.add(new Quiz("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
 
+        // TODO change answers
         arraylist.add(new Quiz("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "167", "176", "716", "617", "176"));
 
         arraylist.add(new Quiz("42 : 6 = ?", "167", "176", "716", "617", "176"));

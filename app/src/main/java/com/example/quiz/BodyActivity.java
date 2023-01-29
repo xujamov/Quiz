@@ -27,7 +27,6 @@ import java.util.List;
 
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
     String category;
-    ImageView imageView;
     FrameLayout frameLayout;
 
     // list of bone elements
@@ -61,13 +60,11 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         category = intent.getStringExtra("category");
 
 
-        imageView = (ImageView) findViewById(R.id.imageView);
         frameLayout = (FrameLayout) findViewById(R.id.body_frame);
-        // if category is skelet
         switch (category) {
             case "bone":
                 implementBoneLists();
-                imageView.setImageResource(R.drawable.v4_skeleton_shadow);
+                setBlackboardResource(R.drawable.v4_skeleton_shadow);
                 mainBlackboardRes = R.drawable.v3_skeleton;
                 partsSize = bonesList.size();
                 partsList = new ArrayList<>(bonesList);
@@ -76,7 +73,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 break;
             case "muscle":
                 implementMuscleLists();
-                imageView.setImageResource(R.drawable.muscule_shadow);
+                setBlackboardResource(R.drawable.muscule_shadow);
                 mainBlackboardRes = R.drawable.muscle;
                 partsSize = muscleList.size();
                 partsList = new ArrayList<>(muscleList);
@@ -86,7 +83,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
             case "organ":
 //                TODO not finished
 //                implementMuscleLists();
-//                imageView.setImageResource(R.drawable.muscule_shadow);
 //                mainBlackboardRes = R.drawable.muscle;
                 partsSize = organList.size();
                 partsList = new ArrayList<>(organList);
@@ -283,15 +279,14 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 if (dragEvent.getResult()) {
                     if (correctAnswers == partsSize) {
                         frameLayout.removeAllViews();
-                        imageView.setImageResource(mainBlackboardRes);
-                        setBlackboard(imageView);
+                        setBlackboardResource(mainBlackboardRes);
                         playMusic(R.raw.complete);
                         new CountDownTimer(2100,1000){
                             public void onTick(long millisUntilFinished){
                                 YoYo.with(Techniques.Tada)
                                         .duration(700)
                                         .repeat(3)
-                                        .playOn(imageView);
+                                        .playOn(findViewById(mainBlackboardRes));
                             }
                             public void onFinish(){
                                 Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
@@ -328,13 +323,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.addView(ivPart);
         correctAnswers++;
-    }
-
-    private void setBlackboard(ImageView ivPart) {
-        int padding = dpAsPixels(30);
-        ivPart.setPadding(padding, padding, padding, padding);
-        frameLayout.removeAllViews();
-        frameLayout.addView(ivPart);
     }
 
     private ImageView tableImageView(int resId) {
