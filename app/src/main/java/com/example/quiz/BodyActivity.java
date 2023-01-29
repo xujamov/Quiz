@@ -2,6 +2,7 @@ package com.example.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
@@ -147,8 +148,8 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
     //Implement long click and drag listener
     private void implementEvents() {
-        findViewById(R.id.body_layout).setOnDragListener(BodyActivity.this);
-        findViewById(R.id.parts_layout).setOnDragListener(BodyActivity.this);
+        frameLayout.setOnDragListener(BodyActivity.this);
+        findViewById(R.id.full_body).setOnDragListener(BodyActivity.this);
     }
 
     @Override
@@ -165,90 +166,27 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         // Handles each of the expected events
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
-
-                Log.e("DRAG_EVENT:", "ACTION_DRAG_STARTED");
-
-                // Determines if this View can accept the dragged data
-                if (dragEvent.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-                    // if you want to apply color when drag started to your view you can uncomment below lines
-                    // to give any color tint to the View to indicate that it can accept
-                    // data.
-                    //view.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
-
-                    // Invalidate the view to force a redraw in the new tint
-                    // view.invalidate();
-
-                    // returns true to indicate that the View can accept the dragged data.
-                    return true;
-
-                }
-
-                // Returns false. During the current drag and drop operation, this View will
-                // not receive events again until ACTION_DRAG_ENDED is sent.
-                return false;
+                return dragEvent.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN);
 
             case DragEvent.ACTION_DRAG_ENTERED:
 
-                Log.e("DRAG_EVENT:", "ACTION_DRAG_ENTERED");
-
-                // Applies a MAGENTA or any color tint to the View,
-                // Return true; the return value is ignored.
-
-//                view.getBackground().setColorFilter(Color.MAGENTA, PorterDuff.Mode.SRC_IN);
-
-                // Invalidate the view to force a redraw in the new tint
+            case DragEvent.ACTION_DRAG_EXITED:
                 view.invalidate();
-
                 return true;
 
             case DragEvent.ACTION_DRAG_LOCATION:
-
-                Log.e("DRAG_EVENT:", "ACTION_DRAG_LOCATION");
-
-                // Ignore the event
-                return true;
-
-            case DragEvent.ACTION_DRAG_EXITED:
-
-                Log.e("DRAG_EVENT:", "ACTION_DRAG_EXITED");
-
-                // Re-sets the color tint to blue, if you had set the BLUE color or any color in ACTION_DRAG_STARTED. Returns true; the return value is ignored.
-
-                //  view.getBackground().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
-
-                //If u had not provided any color in ACTION_DRAG_STARTED then clear color filter.
-//                view.getBackground().clearColorFilter();
-
-                // Invalidate the view to force a redraw in the new tint
-                view.invalidate();
-
                 return true;
 
             case DragEvent.ACTION_DROP:
 
-                Log.e("DRAG_EVENT:", "ACTION_DROP");
-
-                // Gets the item containing the dragged data
                 ClipData.Item item = dragEvent.getClipData().getItemAt(0);
-
-                // Gets the text data from the item.
-                String dragData = item.getText().toString();
-
-                // Turns off any color tints
-//                view.getBackground().clearColorFilter();
-
-                // Invalidates the view to force a redraw
                 view.invalidate();
 
                 //get dragged view
                 View v = (View) dragEvent.getLocalState();
                 ViewGroup owner = (ViewGroup) v.getParent();
 
-                LinearLayout container = (LinearLayout) view; //caste the view into LinearLayout as our drag acceptable layout is LinearLayout
-
-                if (container.toString().contains("parts_layout")) {
-                    v.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
-                } else {
+                if (view.toString().contains("body_frame")) {
                     owner.removeView(v); //remove the dragged view
                     if (!partsList.isEmpty()) {
                         owner.addView(tableImageView(partsList.get(0)));
@@ -258,21 +196,13 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                     if(partsListAll.contains(v.getId())){
                         setBlackboardResource(frameList.get(partsListAll.indexOf(v.getId())));
                     }
+                } else {
+                    v.setVisibility(View.VISIBLE);//finally set Visibility to VISIBLE
+
                 }
-
-
-
-                // Returns true. DragEvent.getResult() will return true.
                 return true;
 
             case DragEvent.ACTION_DRAG_ENDED:
-
-                Log.e("DRAG_EVENT:", "ACTION_DRAG_ENDED");
-
-                // Turns off any color tinting
-//                view.getBackground().clearColorFilter();
-
-                // Invalidates the view to force a redraw
                 view.invalidate();
 
                 // invoke getResult(), and displays what happened.
@@ -363,33 +293,15 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onLongClick(View view) {
-
-        // Create a new ClipData.Item from the tag
-        ClipData.Item item = new ClipData.Item((CharSequence) view.getTag());
-
-        String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
-
-        // Create a new ClipData using the tag as a label, the plain text MIME type, and
-        // the already-created item. This will create a new ClipDescription object within the
-        // ClipData, and set its MIME type entry to "text/plain"
-        ClipData data = new ClipData(view.getTag().toString(), mimeTypes, item);
-
-        // Instantiates the drag shadow builder.
+        ClipData data1 = ClipData.newPlainText("", "");
         View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
 
-        // Starts the drag
-        view.startDragAndDrop(data //data to be dragged
-                , shadowBuilder //drag shadow
-                , view //local data about the drag and drop operation
-                , 0 //flags (not currently used, set to 0)
-        );
-
-        //Set view visibility to INVISIBLE as we are going to drag the view
+        view.startDragAndDrop(data1, shadowBuilder, view, 0);
         view.setVisibility(View.INVISIBLE);
-
         return true;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onPostResume() {
         super.onPostResume();
