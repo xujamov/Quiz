@@ -18,15 +18,13 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void PlaySkelet(View view) {
-        Intent intent = new Intent(CategoryActivity.this, BodyActivity.class);
-        intent.putExtra("category", "bone");
+        Intent intent = new Intent(CategoryActivity.this, ForestActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void PlayMuscle(View view) {
         Intent intent = new Intent(CategoryActivity.this, BodyActivity.class);
-        intent.putExtra("category", "muscle");
         startActivity(intent);
         finish();
     }

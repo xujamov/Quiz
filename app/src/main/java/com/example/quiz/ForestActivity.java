@@ -1,9 +1,5 @@
 package com.example.quiz;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Guideline;
-
 import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -18,9 +14,10 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -28,13 +25,13 @@ import com.daimajia.androidanimations.library.YoYo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
+public class ForestActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
     ConstraintLayout body_layout, parts_layout;
     ImageView body_frame, iv_board, iv_bone1, iv_bone2;
 
-    // list of muscle elements
-    List<Integer> muscleList = new ArrayList<>();
-    List<Integer> muscleFrameList = new ArrayList<>();
+    // list of bone elements
+    List<Integer> bonesList = new ArrayList<>();
+    List<Integer> boneFrameList = new ArrayList<>();
 
     List<Integer> partsListAll = new ArrayList<>();
     List<Integer> partsList = new ArrayList<>();
@@ -48,14 +45,14 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_body);
+        setContentView(R.layout.activity_forest);
 
-        implementMuscleLists();
-        mainBlackboardRes = R.drawable.muscle;
-        partsSize = muscleList.size();
-        partsList = new ArrayList<>(muscleList);
-        partsListAll = new ArrayList<>(muscleList);
-        frameList = new ArrayList<>(muscleFrameList);
+        implementBoneLists();
+        mainBlackboardRes = R.drawable.v3_skeleton;
+        partsSize = bonesList.size();
+        partsList = new ArrayList<>(bonesList);
+        partsListAll = new ArrayList<>(bonesList);
+        frameList = new ArrayList<>(boneFrameList);
 
         body_layout = (ConstraintLayout) findViewById(R.id.body_layout);
         parts_layout = (ConstraintLayout) findViewById(R.id.parts_layout);
@@ -71,7 +68,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         partsList.remove(0);
         partsList.remove(0);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.classroom);
+        mediaPlayer = MediaPlayer.create(this, R.raw.forest);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
@@ -83,27 +80,29 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         mp.start();
     }
 
-    //Implement muscle lists
-    private void implementMuscleLists() {
-        muscleList.add(R.drawable.muscle_part_belly);
-        muscleList.add(R.drawable.muscle_part_chest);
-        muscleList.add(R.drawable.muscle_part_hand);
-        muscleList.add(R.drawable.muscle_part_legs);
-        muscleList.add(R.drawable.muscle_part_head);
+    //Implement bone lists
+    private void implementBoneLists() {
+        bonesList.add(R.drawable.v4_skeletone_part_panal_0);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_1);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_2);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_3);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_4);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_5);
+        bonesList.add(R.drawable.v4_skeletone_part_panal_6);
 
-        muscleFrameList.add(R.drawable.muscle_belly);
-        muscleFrameList.add(R.drawable.muscle_chest);
-        muscleFrameList.add(R.drawable.muscle_hand);
-        muscleFrameList.add(R.drawable.muscle_legs);
-        muscleFrameList.add(R.drawable.muscle_head);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_0);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_1);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_2);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_3);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_4);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_5);
+        boneFrameList.add(R.drawable.v4_skeletone_part_use_6);
     }
-
-
 
     //Implement long click and drag listener
     private void implementEvents() {
-        iv_board.setOnDragListener(BodyActivity.this);
-        findViewById(R.id.full_body).setOnDragListener(BodyActivity.this);
+        iv_board.setOnDragListener(ForestActivity.this);
+        findViewById(R.id.full_body).setOnDragListener(ForestActivity.this);
     }
 
     @Override
@@ -166,9 +165,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                 // invoke getResult(), and displays what happened.
                 if (dragEvent.getResult()) {
                     if (correctAnswers == partsSize) {
-                        Guideline guideline = (Guideline) body_layout.getViewById(R.id.guideline);
                         body_layout.removeAllViews();
-                        body_layout.addView(guideline);
                         setBlackboardResource(mainBlackboardRes);
                         playMusic(R.raw.complete);
                         new CountDownTimer(2100,1000){
@@ -179,7 +176,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                                         .playOn(findViewById(mainBlackboardRes));
                             }
                             public void onFinish(){
-                                Intent intent = new Intent(BodyActivity.this, GameWonActivity.class);
+                                Intent intent = new Intent(ForestActivity.this, GameWonActivity.class);
                                 startActivity(intent);
                                 mediaPlayer.reset();
                                 finish();
@@ -201,7 +198,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     private void setBlackboardResource(int resId) {
-        ImageView ivPart = new ImageView(BodyActivity.this);
+        ImageView ivPart = new ImageView(ForestActivity.this);
         ivPart.setImageResource(resId);
         ivPart.setId(resId);
         ivPart.setLayoutParams(body_frame.getLayoutParams());
@@ -210,7 +207,7 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     private ImageView tableImageView(int resId, String position) {
-        ImageView ivPart = new ImageView(BodyActivity.this);
+        ImageView ivPart = new ImageView(ForestActivity.this);
         ivPart.setImageResource(resId);
         ivPart.setId(resId);
         if (position.equals("left"))
@@ -223,11 +220,11 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     }
 
     private void startGame(View view) {
-        startQuestionGame(view);
+        startQuizGame(view);
     }
 
-    private void startQuestionGame(View view) {
-        Intent intent = new Intent(BodyActivity.this, QuestionGameActivity.class);
+    private void startQuizGame(View view) {
+        Intent intent = new Intent(ForestActivity.this, QuizGameActivity.class);
         intent.putExtra("bodyPartId", view.getId());
         startActivity(intent);
     }
@@ -247,12 +244,12 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
     protected void onPostResume() {
         super.onPostResume();
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(BodyActivity.this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ForestActivity.this);
         int data = prefs.getInt("bodyPartId", 0); //no id: default value
         if (data != 0 && !partsList.contains(data)) {
             ImageView iv = (ImageView) findViewById(data);
             if (iv != null) {
-                iv.setOnLongClickListener(BodyActivity.this);
+                iv.setOnLongClickListener(ForestActivity.this);
                 iv.setOnClickListener(null);
                 YoYo.with(Techniques.Tada)
                         .duration(700)

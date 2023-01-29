@@ -1,68 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/full_body"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/full_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/classrom_background"
     tools:context=".BodyActivity">
 
-    <LinearLayout
-        android:id="@+id/body_layout"
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/parts_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.60"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/body_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:background="@drawable/doska"
-            android:orientation="horizontal"
-            android:padding="20dp">
-
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/parts_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/poll"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.40"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/body_layout"
-        app:layout_constraintVertical_bias="0.5">
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parts_layout"
             android:layout_width="match_parent"
-            android:baselineAligned="false"
-            android:layout_height="250dp"
-            android:background="@drawable/table">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_board"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="39dp"
+                android:layout_marginEnd="39dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.40"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintWidth_percent="0.90"
+                app:srcCompat="@drawable/classroom_board" />
 
             <LinearLayout
-                android:id="@+id/table_layout"
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/classroom_table"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.26">
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_bone1"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:orientation="horizontal" />
-        </LinearLayout>
+                android:layout_height="0dp"
+                android:tag="left"
+                app:layout_constraintBottom_toTopOf="@id/guideline3"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintStart_toStartOf="@+id/guideline6"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/muscle_part_belly" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_bone2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:tag="right"
+                app:layout_constraintBottom_toTopOf="@id/guideline3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/muscle_part_chest" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.79" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.06" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.80" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-10dp"
+            tools:layout_editor_absoluteY="5dp">
+
+            <ImageView
+                android:id="@+id/body_frame"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.30"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline"
+                app:layout_constraintWidth_percent="0.45"
+                app:srcCompat="@drawable/muscule_shadow" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.10" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
