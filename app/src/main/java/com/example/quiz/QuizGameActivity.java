@@ -20,7 +20,7 @@ import java.util.List;
 
 import info.hoang8f.widget.FButton;
 
-public class MainGameActivity extends AppCompatActivity {
+public class QuizGameActivity extends AppCompatActivity {
     FButton buttonA, buttonB, buttonC, buttonD;
     TextView questionText, triviaQuizText, timeText, resultText;
     QuizHelper QuizHelper;
@@ -263,7 +263,7 @@ public class MainGameActivity extends AppCompatActivity {
     //This dialog is show to the user after he ans correct
     public void correctDialog() {
         playMusic(R.raw.correct);
-        final Dialog dialogCorrect = new Dialog(MainGameActivity.this);
+        final Dialog dialogCorrect = new Dialog(QuizGameActivity.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogCorrect.getWindow() != null) {
             ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
@@ -284,7 +284,7 @@ public class MainGameActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainGameActivity.this);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(QuizGameActivity.this);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("bodyPartId", bodyPartId); //InputString: from the EditText
                 editor.apply();

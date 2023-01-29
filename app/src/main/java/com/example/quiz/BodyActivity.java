@@ -26,13 +26,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BodyActivity extends AppCompatActivity implements View.OnLongClickListener, View.OnDragListener{
+    String category;
     ImageView imageView;
     FrameLayout frameLayout;
+
+    // list of bone elements
     List<Integer> bonesList = new ArrayList<>();
     List<Integer> boneFrameList = new ArrayList<>();
 
+    // list of muscle elements
+    List<Integer> muscleList = new ArrayList<>();
+    List<Integer> muscleFrameList = new ArrayList<>();
+
+    // list of organ elements
+    List<Integer> organList = new ArrayList<>();
+    List<Integer> organFrameList = new ArrayList<>();
+
+    List<Integer> partsListAll = new ArrayList<>();
     List<Integer> partsList = new ArrayList<>();
     List<Integer> frameList = new ArrayList<>();
+    int mainBlackboardRes;
+    private int partsSize = 0;
     private int correctAnswers = 0;
 
     MediaPlayer mediaPlayer;
@@ -42,13 +56,45 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body);
 
+        // current category
+        Intent intent = getIntent();
+        category = intent.getStringExtra("category");
+
+
         imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.v4_skeleton_shadow);
         frameLayout = (FrameLayout) findViewById(R.id.body_frame);
-        implementLists();
         // if category is skelet
-        partsList = new ArrayList<>(bonesList);
-        frameList = new ArrayList<>(boneFrameList);
+        switch (category) {
+            case "bone":
+                implementBoneLists();
+                imageView.setImageResource(R.drawable.v4_skeleton_shadow);
+                mainBlackboardRes = R.drawable.v3_skeleton;
+                partsSize = bonesList.size();
+                partsList = new ArrayList<>(bonesList);
+                partsListAll = new ArrayList<>(bonesList);
+                frameList = new ArrayList<>(boneFrameList);
+                break;
+            case "muscle":
+                implementMuscleLists();
+                imageView.setImageResource(R.drawable.muscule_shadow);
+                mainBlackboardRes = R.drawable.muscle;
+                partsSize = muscleList.size();
+                partsList = new ArrayList<>(muscleList);
+                partsListAll = new ArrayList<>(muscleList);
+                frameList = new ArrayList<>(muscleFrameList);
+                break;
+            case "organ":
+//                TODO not finished
+//                implementMuscleLists();
+//                imageView.setImageResource(R.drawable.muscule_shadow);
+//                mainBlackboardRes = R.drawable.muscle;
+                partsSize = organList.size();
+                partsList = new ArrayList<>(organList);
+                partsListAll = new ArrayList<>(organList);
+                frameList = new ArrayList<>(organFrameList);
+                break;
+        }
+
         LinearLayout tableLayout = (LinearLayout) findViewById(R.id.table_layout);
         tableLayout.addView(tableImageView(partsList.get(0)));
         partsList.remove(0);
@@ -67,8 +113,8 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         mp.start();
     }
 
-    //Implement lists
-    private void implementLists() {
+    //Implement bone lists
+    private void implementBoneLists() {
         bonesList.add(R.drawable.v4_skeletone_part_panal_0);
         bonesList.add(R.drawable.v4_skeletone_part_panal_1);
         bonesList.add(R.drawable.v4_skeletone_part_panal_2);
@@ -85,6 +131,23 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         boneFrameList.add(R.drawable.v4_skeletone_part_use_5);
         boneFrameList.add(R.drawable.v4_skeletone_part_use_6);
     }
+
+    //Implement muscle lists
+    private void implementMuscleLists() {
+        muscleList.add(R.drawable.muscle_part_belly);
+        muscleList.add(R.drawable.muscle_part_chest);
+        muscleList.add(R.drawable.muscle_part_hand);
+        muscleList.add(R.drawable.muscle_part_legs);
+        muscleList.add(R.drawable.muscle_part_head);
+
+        muscleFrameList.add(R.drawable.muscle_belly);
+        muscleFrameList.add(R.drawable.muscle_chest);
+        muscleFrameList.add(R.drawable.muscle_hand);
+        muscleFrameList.add(R.drawable.muscle_legs);
+        muscleFrameList.add(R.drawable.muscle_head);
+    }
+
+
 
     //Implement long click and drag listener
     private void implementEvents() {
@@ -196,8 +259,8 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
                         partsList.remove(0);
                     }
                     // show part in shadow
-                    if(bonesList.contains(v.getId())){
-                        setBlackboardResource(boneFrameList.get(bonesList.indexOf(v.getId())));
+                    if(partsListAll.contains(v.getId())){
+                        setBlackboardResource(frameList.get(partsListAll.indexOf(v.getId())));
                     }
                 }
 
@@ -218,13 +281,11 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
 
                 // invoke getResult(), and displays what happened.
                 if (dragEvent.getResult()) {
-                    if (correctAnswers == bonesList.size()) {
+                    if (correctAnswers == partsSize) {
                         frameLayout.removeAllViews();
-                        imageView.setImageResource(R.drawable.v3_skeleton);
+                        imageView.setImageResource(mainBlackboardRes);
                         setBlackboard(imageView);
-                        // TODO should wait some seconds
                         playMusic(R.raw.complete);
-                        setBlackboard(imageView);
                         new CountDownTimer(2100,1000){
                             public void onTick(long millisUntilFinished){
                                 YoYo.with(Techniques.Tada)
@@ -274,10 +335,6 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         ivPart.setPadding(padding, padding, padding, padding);
         frameLayout.removeAllViews();
         frameLayout.addView(ivPart);
-//        YoYo.with(Techniques.Tada)
-//                .duration(700)
-//                .repeat(5)
-//                .playOn(ivPart);
     }
 
     private ImageView tableImageView(int resId) {
@@ -289,12 +346,31 @@ public class BodyActivity extends AppCompatActivity implements View.OnLongClickL
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         lp.setMargins(margin, margin, margin, margin);
         ivPart.setLayoutParams(lp);
-        ivPart.setOnClickListener(view -> {
-            Intent intent = new Intent(BodyActivity.this, QuestionGameActivity.class);
-            intent.putExtra("bodyPartId", view.getId());
-            startActivity(intent);
-        });
+        ivPart.setOnClickListener(this::startGame);
         return ivPart;
+    }
+
+    private void startGame(View view) {
+        switch(category) {
+            case "bone":
+                startQuizGame(view);
+                break;
+            case "muscle":
+                startQuestionGame(view);
+                break;
+        }
+    }
+
+    private void startQuizGame(View view) {
+        Intent intent = new Intent(BodyActivity.this, QuizGameActivity.class);
+        intent.putExtra("bodyPartId", view.getId());
+        startActivity(intent);
+    }
+
+    private void startQuestionGame(View view) {
+        Intent intent = new Intent(BodyActivity.this, QuestionGameActivity.class);
+        intent.putExtra("bodyPartId", view.getId());
+        startActivity(intent);
     }
 
     @Override
