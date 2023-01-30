@@ -72,13 +72,13 @@ public class LanguageQuestionGameActivity extends AppCompatActivity {
 
         list.add(new Question("Quyida berilgan so`zga ma`nodosh so`zni toping: rohat.", "maza"));
 
-        list.add(new Question("Nima? So`rog`iga javob bo`luvchi so`zni aniqlang. ", "ayiq"));
+        list.add(new Question("5 yoshida 500 ta kitob òqigan bolaning ismini yozing. ", "Lev"));
 
-        list.add(new Question("“Ona yurt” she`rining muallifi kim?", "Dilshod Rajab"));
+        list.add(new Question("3-sinf darsligida berilgan “Ona yurt” she`rining muallifi kim?", "Dilshod Rajab"));
 
-        list.add(new Question("Darslikda berilgan “Vatan” hikoyasining muallifi kim?", "Xudoyberdi To`xtaboyev"));
+        list.add(new Question("3-sinf darsligida berilgan “Vatan” hikoyasining muallifi kim?", "Xudoyberdi To`xtaboyev"));
 
-        list.add(new Question("“Vatan” hikoyasida podshoning suyukli xotini Malika faqat nima yer ekan?", "qush"));
+        list.add(new Question("3-sinf darsligida berilgan “Vatan” hikoyasida podshoning suyukli xotini Malika faqat nima yer ekan?", "qush"));
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);
