@@ -54,13 +54,13 @@ class QuestionHelperLanguage extends SQLiteOpenHelper {
 
         arraylist.add(new Question("Quyida berilgan so`zga ma`nodosh so`zni toping: rohat.", "maza"));
 
-        arraylist.add(new Question("Nima? So`rog`iga javob bo`luvchi so`zni aniqlang. ", "ayiq"));
+        arraylist.add(new Question("5 yoshida 500 ta kitob òqigan bolaning ismini yozing. ", "Lev"));
 
-        arraylist.add(new Question("“Ona yurt” she`rining muallifi kim?", "Dilshod Rajab"));
+        arraylist.add(new Question("3-sinf darsligida berilgan “Ona yurt” she`rining muallifi kim?", "Dilshod Rajab"));
 
-        arraylist.add(new Question("Darslikda berilgan “Vatan” hikoyasining muallifi kim?", "Xudoyberdi To`xtaboyev"));
+        arraylist.add(new Question("3-sinf darsligida berilgan “Vatan” hikoyasining muallifi kim?", "Xudoyberdi To`xtaboyev"));
 
-        arraylist.add(new Question("“Vatan” hikoyasida podshoning suyukli xotini Malika faqat nima yer ekan?", "qush"));
+        arraylist.add(new Question("3-sinf darsligida berilgan “Vatan” hikoyasida podshoning suyukli xotini Malika faqat nima yer ekan?", "qush"));
 
         this.addAllQuestions(arraylist);
 
