@@ -20,6 +20,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".LanguageQuestionGameActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".TimeUpActivity"
             android:theme="@android:style/Theme.Dialog"
             android:exported="false">
@@ -44,7 +51,6 @@
         </activity>
         <activity
             android:name=".GameWonActivity"
-            android:theme="@android:style/Theme.Dialog"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

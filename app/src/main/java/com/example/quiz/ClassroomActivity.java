@@ -225,7 +225,7 @@ public class ClassroomActivity extends AppCompatActivity implements View.OnLongC
     }
 
     private void startQuestionGame(View view) {
-        Intent intent = new Intent(ClassroomActivity.this, QuestionGameActivity.class);
+        Intent intent = new Intent(ClassroomActivity.this, LanguageQuestionGameActivity.class);
         intent.putExtra("bodyPartId", view.getId());
         startActivity(intent);
     }
