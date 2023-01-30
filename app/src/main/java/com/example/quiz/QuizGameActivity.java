@@ -27,7 +27,7 @@ public class QuizGameActivity extends AppCompatActivity {
     Quiz currentQuestion;
     List<Quiz> list;
     int qid = 0;
-    int timeValue = 20;
+    int timeValue = 30;
     int bodyPartId = 0;
     CountDownTimer countDownTimer;
 
@@ -72,7 +72,7 @@ public class QuizGameActivity extends AppCompatActivity {
         currentQuestion = list.get(qid);
 
         //countDownTimer
-        countDownTimer = new CountDownTimer(22000, 1000) {
+        countDownTimer = new CountDownTimer(32000, 1000) {
             public void onTick(long millisUntilFinished) {
 
                 //here you can have your logic to set text to timeText
@@ -119,7 +119,7 @@ public class QuizGameActivity extends AppCompatActivity {
         buttonD.setText(currentQuestion.getOptD());
 
 
-        timeValue = 20;
+        timeValue = 30;
 
         //Now since the user has ans correct just reset timer back for another que- by cancel and start
         countDownTimer.cancel();

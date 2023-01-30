@@ -74,7 +74,7 @@ public class QuestionGameActivity extends AppCompatActivity {
         currentQuestion = list.get(qid);
 
         //countDownTimer
-        countDownTimer = new CountDownTimer(22000, 1000) {
+        countDownTimer = new CountDownTimer(62000, 1000) {
             public void onTick(long millisUntilFinished) {
 
                 //here you can have your logic to set text to timeText

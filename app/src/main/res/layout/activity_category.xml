@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="215dp"
+        android:layout_height="0dp"
         android:onClick="PlaySkelet"
         android:src="@drawable/skelet"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
@@ -24,7 +24,7 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
-        android:layout_height="215dp"
+        android:layout_height="0dp"
         android:onClick="PlayMuscle"
         android:src="@drawable/muscule"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
@@ -38,7 +38,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
-        android:layout_height="215dp"
+        android:layout_height="0dp"
         android:src="@drawable/organs"
         android:onClick="PlayOrgan"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -21,6 +21,7 @@
         </activity>
         <activity
             android:name=".TimeUpActivity"
+            android:theme="@android:style/Theme.Dialog"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -28,6 +29,7 @@
         </activity>
         <activity
             android:name=".PlayAgainActivity"
+            android:theme="@android:style/Theme.Dialog"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -42,6 +44,7 @@
         </activity>
         <activity
             android:name=".GameWonActivity"
+            android:theme="@android:style/Theme.Dialog"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

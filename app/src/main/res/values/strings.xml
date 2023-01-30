@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Quiz</string>
+    <string name="app_name">Boshqotirma</string>
     <string name="welcome">Qani ketdik!</string>
     <string name="quote">Bilimlar dunyosini zabt etamiz!</string>
-    <string name="question">Question</string>
-    <string name="play_again">Play again</string>
+    <string name="question">Savol</string>
+    <string name="play_again">Qayta urinib ko`rish</string>
     <string name="play_next">Davom qilish</string>
     <string name="time">15</string>
-    <string name="correct">Correct</string>
-    <string name="wrongans">Opps the ans was wrong</string>
-    <string name="timeup">Time Up</string>
-    <string name="play_game">Play Game</string>
-    <string name="quit">Quit</string>
-    <string name="next">Next</string>
+    <string name="correct">To`g`ri</string>
+    <string name="wrongans">Afsuski javobingiz noto`g`ri</string>
+    <string name="timeup">Vaqtingiz tugadi</string>
+    <string name="play_game">O`yinni boshlash</string>
+    <string name="quit">Chiqish</string>
+    <string name="next">Keyingi</string>
     <string name="check">Tekshirish</string>
     <string name="cancel">✖</string>
 </resources>
