@@ -14,6 +14,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class QuizGameActivity extends AppCompatActivity {
     TextView questionText, triviaQuizText, timeText, resultText;
     QuizHelper QuizHelper;
     Quiz currentQuestion;
-    List<Quiz> list;
+    List<Quiz> list = new ArrayList<>();;
     int qid = 0;
     int timeValue = 30;
     int bodyPartId = 0;
@@ -63,7 +65,26 @@ public class QuizGameActivity extends AppCompatActivity {
         }
 
         //This will return us a list of data type Question
-        list = QuizHelper.getAllOfTheQuestions();
+        // TODO db error
+//        list = QuizHelper.getAllOfTheQuestions();
+        list.add(new Quiz("70 + 80 = ?", "150", "100", "110", "180", "150"));
+
+        list.add(new Quiz("94 – x = 47\nx = ?", "40", "47", "43", "49", "47"));
+
+        list.add(new Quiz("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi? ?", "3", "4", "5", "6", "5"));
+
+        list.add(new Quiz("72 : 8 = ?", "7", "8", "9", "11", "9"));
+
+        list.add(new Quiz("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
+
+        list.add(new Quiz("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "26", "176", "6", "162", "176"));
+
+        list.add(new Quiz("42 : 6 = ?", "8", "6", "7", "12", "7"));
+
+        list.add(new Quiz("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "167", "764", "584", "176", "176"));
+
+        list.add(new Quiz("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "125", "105", "59", "60", "59"));
+
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);

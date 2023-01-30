@@ -59,8 +59,38 @@ public class OrgansActivity extends AppCompatActivity implements View.OnClickLis
         partsListAll = new ArrayList<>(organList);
 
         QuestionHelperMath QuestionHelper = new QuestionHelperMath(this);
-        savollar = QuestionHelper.getAllOfTheQuestions();
-        savollarAll = QuestionHelper.getAllOfTheQuestions();
+//        savollar = QuestionHelper.getAllOfTheQuestions();
+//        savollarAll = QuestionHelper.getAllOfTheQuestions();
+
+        savollar.add(new Question("70 + 80 = ?", "150"));
+        savollarAll.add(new Question("70 + 80 = ?", "150"));
+
+        savollar.add(new Question("94 – x = 47\nx = ?", "47"));
+        savollarAll.add(new Question("94 – x = 47\nx = ?", "47"));
+
+        savollar.add(new Question("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi?", "5"));
+        savollarAll.add(new Question("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi?", "5"));
+
+        savollar.add(new Question("72 : 8 = ?", "9"));
+        savollarAll.add(new Question("72 : 8 = ?", "9"));
+
+        savollar.add(new Question("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "176"));
+        savollarAll.add(new Question("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "176"));
+
+        savollar.add(new Question("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "567"));
+        savollarAll.add(new Question("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "567"));
+
+        savollar.add(new Question("42 : 6 = ?", "7"));
+        savollarAll.add(new Question("42 : 6 = ?", "7"));
+
+        savollar.add(new Question("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "156"));
+        savollarAll.add(new Question("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "156"));
+
+        savollar.add(new Question("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "59"));
+        savollarAll.add(new Question("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "59"));
+
+
+
 
         selectedQuestions = takeQuestions(partsSize);
 

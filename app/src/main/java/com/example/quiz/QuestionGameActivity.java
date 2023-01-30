@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -28,7 +29,7 @@ public class QuestionGameActivity extends AppCompatActivity {
     TextView questionText, triviaQuizText, timeText, resultText;
     QuestionHelperMath QuestionHelper;
     Question currentQuestion;
-    List<Question> list;
+    List<Question> list = new ArrayList<>();;
     int qid = 0;
     int timeValue = 60;
     int bodyPartId = 0;
@@ -65,7 +66,26 @@ public class QuestionGameActivity extends AppCompatActivity {
         }
 
         //This will return us a list of data type Question
-        list = QuestionHelper.getAllOfTheQuestions();
+        // TODO fix db
+//        list = QuestionHelper.getAllOfTheQuestions();
+        list.add(new Question("70 + 80 = ?", "150"));
+
+        list.add(new Question("94 – x = 47\nx = ?", "47"));
+
+        list.add(new Question("To`rtburchakning bitta uchini kessak necha burchak hosil bo`ladi?", "5"));
+
+        list.add(new Question("72 : 8 = ?", "9"));
+
+        list.add(new Question("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "176"));
+
+        list.add(new Question("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "567"));
+
+        list.add(new Question("42 : 6 = ?", "7"));
+
+        list.add(new Question("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "156"));
+
+        list.add(new Question("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "59"));
+
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);
