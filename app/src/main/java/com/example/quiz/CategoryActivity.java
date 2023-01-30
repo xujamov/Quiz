@@ -3,10 +3,8 @@ package com.example.quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -24,14 +22,13 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void PlayMuscle(View view) {
-        Intent intent = new Intent(CategoryActivity.this, BodyActivity.class);
+        Intent intent = new Intent(CategoryActivity.this, ClassroomActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void PlayOrgan(View view) {
-        Intent intent = new Intent(CategoryActivity.this, BodyActivity.class);
-        intent.putExtra("category", "organ");
+        Intent intent = new Intent(CategoryActivity.this, OrgansActivity.class);
         startActivity(intent);
         finish();
     }

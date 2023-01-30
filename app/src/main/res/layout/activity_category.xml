@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="215dp"
         android:src="@drawable/organs"
+        android:onClick="PlayOrgan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.25"

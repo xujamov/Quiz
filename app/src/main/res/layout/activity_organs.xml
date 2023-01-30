@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/full_body"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/organs_background"
+    tools:context=".ClassroomActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-10dp"
+            tools:layout_editor_absoluteY="5dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiV25"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiV75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.20" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.33" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.46" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.60" />
+
+            <ImageView
+                android:id="@+id/ivPart1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH20"
+                app:layout_constraintEnd_toStartOf="@+id/guiV25"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH33"
+                app:layout_constraintEnd_toStartOf="@+id/guiV25"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH46"
+                app:layout_constraintEnd_toStartOf="@+id/guiV25"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH60"
+                app:layout_constraintEnd_toStartOf="@+id/guiV25"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="@+id/guiV75"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH33"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="@+id/guiV75"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH46"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="@+id/guiV75"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivPart8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guiH60"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.10"
+                app:layout_constraintStart_toStartOf="@+id/guiV75"
+                app:layout_constraintWidth_percent="0.25"
+                app:srcCompat="@drawable/forest_blackboard" />
+
+            <ImageView
+                android:id="@+id/ivQuestion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="184dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/guiH60"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.20"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.4"
+                app:srcCompat="@drawable/forest_blackboard" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parts_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivOpenQuestion"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:onClick="openQuestion"
+                app:layout_constraintBottom_toTopOf="@+id/guiH76"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.2"
+                app:srcCompat="@drawable/question_mark" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH76"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.76" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiV18"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.18" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiV50"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiV68"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.82" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH83"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.83" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
