@@ -69,14 +69,13 @@ class QuizHelper extends SQLiteOpenHelper {
 
         arraylist.add(new Quiz("Bir yuz yetmish olti soni to`g`ri yozilgan qatorni aniqlang.", "167", "176", "716", "617", "176"));
 
-        // TODO change answers
-        arraylist.add(new Quiz("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "167", "176", "716", "617", "176"));
+        arraylist.add(new Quiz("6 raqami o`nlik xona birligida joylashgan  uch xonali sonni toping.", "26", "176", "6", "162", "176"));
 
-        arraylist.add(new Quiz("42 : 6 = ?", "167", "176", "716", "617", "176"));
+        arraylist.add(new Quiz("42 : 6 = ?", "8", "6", "7", "12", "7"));
 
-        arraylist.add(new Quiz("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "167", "176", "716", "617", "176"));
+        arraylist.add(new Quiz("6 raqami birliklar xonasida joylashgan  uch xonali sonni toping.", "167", "764", "584", "176", "176"));
 
-        arraylist.add(new Quiz("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "167", "176", "716", "617", "176"));
+        arraylist.add(new Quiz("Do`konga jami 97 kilogram kartoshka keltirildi. Tushgacha 23 kilogram, tushdan so`ng yana 15 kilogram kartoshka sotildi. Do`konda qancha kartoshka qoldi?", "125", "105", "59", "60", "59"));
 
         this.addAllQuestions(arraylist);
 
