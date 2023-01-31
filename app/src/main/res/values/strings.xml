@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Boshqotirma</string>
     <string name="welcome">Qani ketdik!</string>
+    <string name="shimmer">IT-Forelead</string>
     <string name="quote">Bilimlar dunyosini zabt etamiz!</string>
     <string name="question">Savol</string>
     <string name="play_again">Qayta urinib ko`rish</string>
