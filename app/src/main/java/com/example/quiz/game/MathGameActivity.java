@@ -1,3 +1,4 @@
+/*
 package com.example.quiz.game;
 
 import android.app.Activity;
@@ -10,8 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.quiz.R;
-import com.cncoderx.wheelview.OnWheelChangedListener;
-import com.cncoderx.wheelview.WheelView;
+import com.example.quiz.game.OnWheelChangedListener;
 
 public class MathGameActivity extends Activity implements View.OnClickListener {
     WheelView  a, b, c, d, e;
@@ -142,3 +142,4 @@ public class MathGameActivity extends Activity implements View.OnClickListener {
         e.setCurrentIndex(0);
     }
 }
+*/

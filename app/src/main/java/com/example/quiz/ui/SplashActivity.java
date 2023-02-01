@@ -7,16 +7,14 @@ import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.quiz.R;
-import com.example.quiz.game.MathGameActivity;
+import com.example.quiz.ScreenActivity;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 
 public class SplashActivity extends AppCompatActivity {
-
-    private AnimationDrawable mAnimationDrawable;
-//    NewtonCradleLoading newtonCradleLoading;
     ImageView imageView;
     Shimmer shimmer;
     ShimmerTextView myShimmerTextView;
@@ -26,43 +24,23 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        myShimmerTextView = (ShimmerTextView) findViewById(R.id.myShimmerTextView);
-//        newtonCradleLoading = (NewtonCradleLoading)findViewById(R.id.newton_cradle_loading);
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setBackgroundResource(R.drawable.fitnesscat);
+        myShimmerTextView = findViewById(R.id.myShimmerTextView);
+        imageView = findViewById(R.id.imageView);
 
+        Glide.with(this)
+                .asGif()
+                .load(R.drawable.coding)
+                .into(imageView);
 
-        mAnimationDrawable = (AnimationDrawable) imageView.getBackground();
-
-        /*
-         * When we get the menu from json
-         * use splash
-         */
-   /*     new CountDownTimer(6000,1000){
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        } .start();*/
-
-        new CountDownTimer(6000,1000){
+        new CountDownTimer(7000,1000){
             public void onTick(long millisUntilFinished){
-                mAnimationDrawable.start();
                 shimmer = new Shimmer();
                 shimmer.start(myShimmerTextView);
-//                newtonCradleLoading.start();
-//                newtonCradleLoading.setLoadingColor(R.color.colorPrimary);
             }
             public void onFinish(){
-                Intent intent = new Intent(SplashActivity.this, MathGameActivity.class);
+                Intent intent = new Intent(SplashActivity.this, ScreenActivity.class);
                 startActivity(intent);
                 finish();
-
             }
         } .start();
 
