@@ -1,0 +1,14 @@
+<resources>
+    <style name="DatePickerStyle">
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:state_selected" color="@android:color/white"/>
+        <item name="android:unselectedAlpha" color="@android:#606060" />
+        <item name="android:divider" res="">@drawable/date_picker_divider</item>
+    </style>
+
+    <style name="CustomDialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

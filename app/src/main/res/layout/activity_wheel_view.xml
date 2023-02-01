@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_back">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiV24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.237" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiV15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiH10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ivQueBoard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/forest_board"
+        app:layout_constraintHeight_percent="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guiH10"
+        app:layout_constraintWidth_percent="0.80">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/wood"
+            android:gravity="center"
+            android:text="10 + 10 = ?"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiH71"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.711" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#0d0d0d"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintStart_toStartOf="@+id/guiV24"
+        app:layout_constraintTop_toTopOf="@+id/guiH71"
+        app:layout_constraintWidth_percent="0.525">
+
+        <com.example.quiz.wheelview.Wheel3DView
+            android:id="@+id/textView1"
+            style="@style/DatePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:wheelCyclic="true" />
+
+        <com.example.quiz.wheelview.Wheel3DView
+            android:id="@+id/textView2"
+            style="@style/DatePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:wheelCyclic="true" />
+
+        <com.example.quiz.wheelview.Wheel3DView
+            android:id="@+id/textView3"
+            style="@style/DatePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:wheelCyclic="true"
+            app:wheelToward="right" />
+
+        <com.example.quiz.wheelview.Wheel3DView
+            android:id="@+id/textView4"
+            style="@style/DatePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:wheelCyclic="true"
+            app:wheelToward="right" />
+
+        <com.example.quiz.wheelview.Wheel3DView
+            android:id="@+id/textView5"
+            style="@style/DatePickerStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:wheelCyclic="true"
+            app:wheelToward="right" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewCheck"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="CheckAnswer"
+        android:src="@drawable/button_check"
+        app:layout_constraintHeight_percent="0.092"
+        app:layout_constraintStart_toStartOf="@+id/guiV31"
+        app:layout_constraintTop_toTopOf="@+id/guiH90"
+        app:layout_constraintWidth_percent="0.397" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiV31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.313" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiV75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiH90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.908" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewExit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.092"
+        app:layout_constraintStart_toStartOf="@+id/guiV75"
+        app:layout_constraintTop_toTopOf="@+id/guiH90"
+        app:layout_constraintWidth_percent="0.25" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

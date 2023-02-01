@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.quiz.R;
 import com.example.quiz.ScreenActivity;
+import com.example.quiz.game.MathGameActivity;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -38,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                 shimmer.start(myShimmerTextView);
             }
             public void onFinish(){
-                Intent intent = new Intent(SplashActivity.this, ScreenActivity.class);
+                Intent intent = new Intent(SplashActivity.this, MathGameActivity.class);
                 startActivity(intent);
                 finish();
             }
