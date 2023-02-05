@@ -1,36 +1,21 @@
-package com.example.quiz;
+package com.example.quiz
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.os.Bundle
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-
-public class ScreenActivity extends AppCompatActivity {
-    ImageView playGame;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen);
-        //the below method will initialize views
-        initViews();
+class ScreenActivity : AppCompatActivity() {
+    private var playGame: ImageView? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_screen)
 
         //PlayGame button - it will take you to the CategoryActivity
-        playGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ScreenActivity.this, CategoryActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
-    private void initViews() {
-        //initialize views here
-        playGame =(ImageView)findViewById(R.id.playGame);
-
+        playGame!!.setOnClickListener {
+            val intent = Intent(this@ScreenActivity, CategoryActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
