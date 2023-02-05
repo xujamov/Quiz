@@ -9,6 +9,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -47,6 +48,9 @@ public class ClassroomActivity extends AppCompatActivity implements View.OnLongC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classroom);
+
+        ImageView mImageViewFilling = (ImageView) findViewById(R.id.think);
+        ((AnimationDrawable) mImageViewFilling.getDrawable()).start();
 
         implementMuscleLists();
         mainBlackboardRes = R.drawable.muscle;

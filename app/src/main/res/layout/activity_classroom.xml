@@ -31,6 +31,17 @@
                 app:layout_constraintWidth_percent="0.90"
                 app:srcCompat="@drawable/classroom_board" />
 
+            <ImageView
+                android:id="@+id/think"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/think"
+                app:layout_constraintBottom_toTopOf="@id/guiH86"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.60"
+                app:layout_constraintWidth_percent="0.50" />
+
+
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
@@ -70,6 +81,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.79" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guiH86"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.86" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"

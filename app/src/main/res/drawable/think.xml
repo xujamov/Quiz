@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/girls_thinking_1"
+        android:duration="3000" />
+    <item
+        android:drawable="@drawable/girls_thinking_2"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_3"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_4"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_5"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_6"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_7"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_8"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_9"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_10"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_11"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_12"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_13"
+        android:duration="300" />
+    <item
+        android:drawable="@drawable/girls_thinking_14"
+        android:duration="300" />
+</animation-list>
