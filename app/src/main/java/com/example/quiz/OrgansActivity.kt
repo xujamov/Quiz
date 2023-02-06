@@ -114,14 +114,18 @@ class OrgansActivity : AppCompatActivity(), View.OnClickListener {
             )
         )
         selectedQuestions = takeQuestions(partsSize)
-        mediaPlayer = MediaPlayer.create(this, R.raw.organs)
-//        mediaPlayer.setLooping(true)
-//        mediaPlayer.start()
+        playBackgroundMusic()
         implementCards()
     }
 
     fun playMusic(resId: Int) {
         val mp = MediaPlayer.create(this, resId)
+        mp.start()
+    }
+
+    private fun playBackgroundMusic() {
+        val mp = MediaPlayer.create(this, R.raw.organs)
+        mp.isLooping = true
         mp.start()
     }
 

@@ -55,14 +55,18 @@ class ClassroomActivity : AppCompatActivity(), OnLongClickListener, OnDragListen
         binding.ivMuscle2.setOnClickListener { view: View -> startGame(view) }
         partsList.removeAt(0)
         partsList.removeAt(0)
-        mediaPlayer = MediaPlayer.create(this, R.raw.classroom)
-//        mediaPlayer.setLooping(true)
-//        mediaPlayer.start()
+        playBackgroundMusic()
         implementEvents()
     }
 
     private fun playMusic(resId: Int) {
         val mp = MediaPlayer.create(this, resId)
+        mp.start()
+    }
+
+    private fun playBackgroundMusic() {
+        val mp = MediaPlayer.create(this, R.raw.classroom)
+        mp.isLooping = true
         mp.start()
     }
 
