@@ -2,6 +2,7 @@ package com.example.quiz
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 class CategoryActivity : AppCompatActivity() {
@@ -10,21 +11,21 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_category)
     }
 
-    fun playBone() {
+    fun playBone(view: View) {
         val intent = Intent(this@CategoryActivity, ForestActivity::class.java)
         startActivity(intent)
         finish()
     }
 
-    fun playMuscle() {
-        val intent = Intent(this@CategoryActivity, ClassroomActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    fun playOrgan() {
-        val intent = Intent(this@CategoryActivity, OrgansActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
+//    fun playMuscle(view: View) {
+//        val intent = Intent(this@CategoryActivity, ClassroomActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
+//
+//    fun playOrgan() {
+//        val intent = Intent(this@CategoryActivity, OrgansActivity::class.java)
+//        startActivity(intent)
+//        finish()
+//    }
 }

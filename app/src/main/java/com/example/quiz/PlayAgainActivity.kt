@@ -1,30 +1,23 @@
-package com.example.quiz;
+package com.example.quiz
 
+import android.app.Activity
+import android.os.Bundle
+import android.view.View
+import com.example.quiz.databinding.ActivityPlayAgainBinding
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
+class PlayAgainActivity : Activity() {
+    private lateinit var binding: ActivityPlayAgainBinding
 
-public class PlayAgainActivity extends Activity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityPlayAgainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-    Button playAgain;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play_again);
-        //Initialize
-        playAgain = (Button) findViewById(R.id.playAgainButton);
-
-        //play again button onclick listener
-        playAgain.setOnClickListener(view -> {
-            finish();
-        });
+        binding.playAgainButton.setOnClickListener { view: View? -> finish() }
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
+    override fun onBackPressed() {
+        finish()
     }
 }

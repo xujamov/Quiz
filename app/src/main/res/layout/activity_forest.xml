@@ -2,25 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/full_body"
+    android:id="@+id/fullBody"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_forest"
     tools:context=".ClassroomActivity">
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/parts_layout"
+            android:id="@+id/partsLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_board"
+                android:id="@+id/ivBoard"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="39dp"
@@ -36,7 +36,7 @@
                 app:srcCompat="@drawable/forest_board" />
 
             <ImageView
-                android:id="@+id/iv_bone1"
+                android:id="@+id/ivBone1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="48dp"
@@ -48,7 +48,7 @@
                 app:srcCompat="@drawable/v4_skeletone_part_panal_0" />
 
             <ImageView
-                android:id="@+id/iv_bone2"
+                android:id="@+id/ivBone2"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginEnd="28dp"
@@ -70,14 +70,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/body_layout"
+            android:id="@+id/bodyLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="-10dp"
             tools:layout_editor_absoluteY="5dp">
 
             <ImageView
-                android:id="@+id/body_frame"
+                android:id="@+id/bodyFrame"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="102dp"

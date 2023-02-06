@@ -1,36 +1,22 @@
-package com.example.quiz;
+package com.example.quiz
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.quiz.databinding.ActivityTimeUpBinding
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
-import info.hoang8f.widget.FButton;
-
-public class TimeUpActivity extends AppCompatActivity {
-    FButton playAgainButton;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_up);
-        //Initialize
-        playAgainButton = (FButton)findViewById(R.id.playAgainButton2);
-
+class TimeUpActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityTimeUpBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityTimeUpBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         //play again button onclick listener
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        binding.playAgainButton2.setOnClickListener { finish() }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

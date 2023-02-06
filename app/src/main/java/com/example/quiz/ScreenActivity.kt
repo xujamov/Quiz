@@ -4,15 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.quiz.databinding.ActivityScreenBinding
+import com.example.quiz.databinding.ActivitySplashScreenBinding
 
 class ScreenActivity : AppCompatActivity() {
-    private var playGame: ImageView? = null
+    private lateinit var binding: ActivityScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_screen)
+        binding = ActivityScreenBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         //PlayGame button - it will take you to the CategoryActivity
-        playGame!!.setOnClickListener {
+        binding.playGame.setOnClickListener {
             val intent = Intent(this@ScreenActivity, CategoryActivity::class.java)
             startActivity(intent)
             finish()
