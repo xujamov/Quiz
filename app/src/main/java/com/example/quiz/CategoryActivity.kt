@@ -17,15 +17,15 @@ class CategoryActivity : AppCompatActivity() {
         finish()
     }
 
-//    fun playMuscle(view: View) {
-//        val intent = Intent(this@CategoryActivity, ClassroomActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
-//
-//    fun playOrgan() {
-//        val intent = Intent(this@CategoryActivity, OrgansActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
+    fun playMuscle(view: View) {
+        val intent = Intent(this@CategoryActivity, ClassroomActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun playOrgan(view: View) {
+        val intent = Intent(this@CategoryActivity, OrgansActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

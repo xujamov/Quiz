@@ -27,7 +27,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="39dp"
                 android:layout_marginBottom="52dp"
-                app:layout_constraintBottom_toTopOf="@+id/iv_bone1"
+                app:layout_constraintBottom_toTopOf="@+id/ivBone1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.50"
                 app:layout_constraintStart_toStartOf="parent"

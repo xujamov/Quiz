@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_board"
+                android:id="@+id/ivClassroomBoard"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="39dp"
@@ -54,7 +54,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/iv_bone1"
+                android:id="@+id/ivMuscle1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:tag="left"
@@ -65,7 +65,7 @@
                 app:srcCompat="@drawable/muscle_part_belly" />
 
             <ImageView
-                android:id="@+id/iv_bone2"
+                android:id="@+id/ivMuscle2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:tag="right"
@@ -115,14 +115,14 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/body_layout"
+            android:id="@+id/bodyClassroomLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="-10dp"
             tools:layout_editor_absoluteY="5dp">
 
             <ImageView
-                android:id="@+id/body_frame"
+                android:id="@+id/bodyClassroomFrame"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
